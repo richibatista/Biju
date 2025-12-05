@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Natalbiju — Mensagem de Natal ❤️🎄</title>
+<style>
+  :root{
+    --gold: #d4af37;
+    --deep: #3b002d; /* rosa escuro */
+    --accent: #ff4b8a;
+  }
+  html,body{height:100%;margin:0;font-family:"Helvetica Neue", Arial, sans-serif;background:linear-gradient(180deg, #ff4fa8 0%, #d40078 70%);color:#fff;overflow-x:hidden;}
+
+  /* container */
+  .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:22px;box-sizing:border-box;}
+  .card{
+    width:100%;max-width:820px;background:rgba(255,255,255,0.07);backdrop-filter:blur(8px);
+    border-radius:22px;padding:34px;box-shadow:0 12px 45px rgba(0,0,0,0.5);
+    border:1px solid rgba(255,255,255,0.12);position:relative;overflow:hidden;
+    animation:fadeIn 1.4s ease;
+  }
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+  h1{text-align:center;margin:0;font-size:34px;color:var(--gold);}  
+  p.lead{text-align:center;font-size:20px;opacity:0.9;margin:16px 0 26px}
+
+  .message{background:rgba(255,255,255,0.05);padding:20px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);font-size:18px;line-height:1.7;}
+
+  .heart{text-align:center;margin-top:20px;}
+  .heart svg{width:90px;height:90px;filter:drop-shadow(0 6px 22px rgba(255,0,90,0.4));}
+
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+  /* animated snow */
+  .snow{pointer-events:none;position:absolute;inset:0;z-index:20;}
+  .snow i{position:absolute;background:white;width:6px;height:6px;border-radius:50%;animation:fall linear infinite;opacity:0.9;}
+
+  @keyframes fall{0%{transform:translateY(-10vh);}100%{transform:translateY(110vh);}}
+
+  /* QR block */
+  .qr-container{text-align:center;margin-top:30px;}
+  .qr-container img{width:160px;height:160px;border-radius:12px;border:2px solid rgba(255,255,255,0.2);}  
+
+  /* music player */
+  .music{text-align:center;margin-top:26px;}
+  audio{width:100%;max-width:300px;border-radius:12px;}
+
+  @media(max-width:520px){
+    h1{font-size:26px;}
+    .message{font-size:16px;}
+    .tree{width:120px;}
+  }
+  .animate-btn{opacity:0;transform:translateY(25px);animation:btnEntrance 1.2s ease forwards 1.4s;}
+  @keyframes btnEntrance{0%{opacity:0;transform:translateY(25px);}100%{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+
+    <h1>Feliz Natal, meu amor ❤️</h1>
+    <p class="lead">Uma surpresa feita com amor — agora com música e magia.</p>
+
+    <div class="message">
+      <p>Feliz Natal, meu amor. Quero que tenhas um Natal maravilhoso, cheio de carinho, alegria e tudo o que mereces.</p>
+      <p>És a pessoa que ilumina os meus dias — e mal posso esperar por tudo o que ainda vamos viver juntos.</p>
+      <p style="margin-top:14px;font-weight:700;color:var(--gold);">Para ti, com todo o meu amor,<br><em>Ricardo Batista</em></p>
+    </div>
+
+    <div class="heart">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 21s-7-4.35-9-7.2C-0.5 9.5 4 3 8.5 6.2 10 7.5 12 9.5 12 9.5s2-1.9 3.5-3.3C20 3 24.5 9.5 21 13.8 19 16.65 12 21 12 21z" fill="#ff4b8a"/>
+      </svg>
+    </div>
+
+    
+
+    <!-- music -->
+    <div class="music" style="text-align:center;margin-top:26px;">
+      <button id="playBtn" class="animate-btn" style="background:#ff4fa8;border:none;padding:14px 24px;font-size:18px;border-radius:14px;color:white;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,0.3);cursor:pointer;transition:0.3s;">
+        ▶ Tocar música
+      </button>
+      <audio id="bgmusic" loop>
+        <source src="Jingle Bells - Kevin MacLeod.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <script>
+      const btn = document.getElementById('playBtn');
+      const audio = document.getElementById('bgmusic');
+      btn.addEventListener('click', () => {
+        audio.play();
+        btn.innerText = '🎵 A tocar';
+        btn.style.opacity = '0.7';
+      });
+    </script>
+
+    <!-- QR code -->
+    <div class="qr-container">
+      <p>Scan para abrir esta mensagem:</p>
+      <img src="qr.png" alt="QR Code" />
+    </div>
+
+  </div>
+
+  <div class="snow"></div>
+</div>
+
+<script>
+// snow particles
+const snow = document.querySelector('.snow');
+for(let i=0;i<40;i++){
+  const el = document.createElement('i');
+  el.style.left = (Math.random()*100)+'vw';
+  el.style.animationDuration = (6 + Math.random()*5)+'s';
+  el.style.animationDelay = (Math.random()*5)+'s';
+  el.style.width = el.style.height = (4 + Math.random()*6)+'px';
+  snow.appendChild(el);
+}
+</script>
+</body>
+</html>
