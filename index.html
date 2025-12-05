@@ -1,124 +1,100 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!doctype html>
+<html lang="es">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Natalbiju — Mensagem de Natal ❤️🎄</title>
+<title>Feliz Navidad, Rita</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --gold: #d4af37;
-    --deep: #3b002d; /* rosa escuro */
-    --accent: #ff4b8a;
-  }
-  html,body{height:100%;margin:0;font-family:"Helvetica Neue", Arial, sans-serif;background:linear-gradient(180deg, #ff4fa8 0%, #d40078 70%);color:#fff;overflow-x:hidden;}
-
-  /* container */
-  .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:22px;box-sizing:border-box;}
-  .card{
-    width:100%;max-width:820px;background:rgba(255,255,255,0.07);backdrop-filter:blur(8px);
-    border-radius:22px;padding:34px;box-shadow:0 12px 45px rgba(0,0,0,0.5);
-    border:1px solid rgba(255,255,255,0.12);position:relative;overflow:hidden;
-    animation:fadeIn 1.4s ease;
-  }
-
-  @keyframes fadeIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-
-  h1{text-align:center;margin:0;font-size:34px;color:var(--gold);}  
-  p.lead{text-align:center;font-size:20px;opacity:0.9;margin:16px 0 26px}
-
-  .message{background:rgba(255,255,255,0.05);padding:20px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);font-size:18px;line-height:1.7;}
-
-  .heart{text-align:center;margin-top:20px;}
-  .heart svg{width:90px;height:90px;filter:drop-shadow(0 6px 22px rgba(255,0,90,0.4));}
-
-  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-
-  /* animated snow */
-  .snow{pointer-events:none;position:absolute;inset:0;z-index:20;}
-  .snow i{position:absolute;background:white;width:6px;height:6px;border-radius:50%;animation:fall linear infinite;opacity:0.9;}
-
-  @keyframes fall{0%{transform:translateY(-10vh);}100%{transform:translateY(110vh);}}
-
-  /* QR block */
-  .qr-container{text-align:center;margin-top:30px;}
-  .qr-container img{width:160px;height:160px;border-radius:12px;border:2px solid rgba(255,255,255,0.2);}  
-
-  /* music player */
-  .music{text-align:center;margin-top:26px;}
-  audio{width:100%;max-width:300px;border-radius:12px;}
-
-  @media(max-width:520px){
-    h1{font-size:26px;}
-    .message{font-size:16px;}
-    .tree{width:120px;}
-  }
-  .animate-btn{opacity:0;transform:translateY(25px);animation:btnEntrance 1.2s ease forwards 1.4s;}
-  @keyframes btnEntrance{0%{opacity:0;transform:translateY(25px);}100%{opacity:1;transform:translateY(0);}}
+:root{ --bg: linear-gradient(135deg,#fff1f0 0%, #fff7e6 40%, #e8f7ff 100%); --card: rgba(255,255,255,0.98); --accent1:#c62828; --accent2:#2e7d32; --text:#081018; --muted:#54606b; --maxw:980px; }
+*{box-sizing:border-box}
+body{margin:0;font-family:Rubik,system-ui, -apple-system, 'Segoe UI', Roboto, Arial;background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;color:var(--text);}
+.card{width:100%;max-width:var(--maxw);background:var(--card);border-radius:16px;box-shadow:0 12px 40px rgba(2,6,23,0.12);overflow:hidden;display:grid;grid-template-columns:420px 1fr;gap:0;}
+@media(max-width:900px){.card{grid-template-columns:1fr}}
+.left{padding:20px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;flex-direction:column;align-items:center;gap:12px}
+.main-photo{width:360px;height:360px;border-radius:12px;overflow:hidden;border:10px solid rgba(255,255,255,0.9);box-shadow:0 10px 30px rgba(0,0,0,0.12);background:#eee}
+.main-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center}
+.thumb{width:100px;height:70px;border-radius:8px;overflow:hidden;cursor:pointer;border:3px solid transparent;box-shadow:0 6px 14px rgba(0,0,0,0.08);}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb.active{border-color:var(--accent1)}
+.right{padding:28px 24px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.title{font-size:26px;margin:0;font-weight:700}
+.subtitle{margin:0;color:var(--muted)}
+.message{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.06);font-size:17px;line-height:1.7;color:var(--text);white-space:pre-wrap}
+.controls{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;font-weight:700;color:white;text-decoration:none;border:0;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+.btn.music{background:linear-gradient(90deg,#8e24aa,#ff6f00)}
+.btn.copy{background:linear-gradient(90deg,#00b09b,#96c93d)}
+.btn.share{background:linear-gradient(90deg,#1976d2,#64b5f6)}
+@media(max-width:520px){.main-photo{width:100%;height:280px;border-radius:10px;border-width:6px}.thumb{width:86px;height:60px}.card{padding:12px}.right{padding:18px}.title{font-size:20px}.message{font-size:15px}}
+a:focus,button:focus{outline:3px solid rgba(0,0,0,0.08);outline-offset:3px;border-radius:10px}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="card">
-
-    <h1>Feliz Natal, meu amor ❤️</h1>
-    <p class="lead">Uma surpresa feita com amor — agora com música e magia.</p>
-
-    <div class="message">
-      <p>Feliz Natal, meu amor. Quero que tenhas um Natal maravilhoso, cheio de carinho, alegria e tudo o que mereces.</p>
-      <p>És a pessoa que ilumina os meus dias — e mal posso esperar por tudo o que ainda vamos viver juntos.</p>
-      <p style="margin-top:14px;font-weight:700;color:var(--gold);">Para ti, com todo o meu amor,<br><em>Ricardo Batista</em></p>
+<div class="card" role="main" aria-labelledby="ritaTitle">
+  <div class="left">
+    <div class="main-photo" id="mainPhoto" aria-hidden="false">
+      <img src="Rita1.jpg" alt="Foto principal de Rita">
     </div>
-
-    <div class="heart">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 21s-7-4.35-9-7.2C-0.5 9.5 4 3 8.5 6.2 10 7.5 12 9.5 12 9.5s2-1.9 3.5-3.3C20 3 24.5 9.5 21 13.8 19 16.65 12 21 12 21z" fill="#ff4b8a"/>
-      </svg>
+    <div class="thumbs" role="list" aria-label="Galería de fotos">
+      <div class="thumb active" role="listitem" tabindex="0" data-src="Rita1.jpg"><img src="Rita1.jpg" alt="Foto 1 de Rita"></div>
+      <div class="thumb" role="listitem" tabindex="0" data-src="Rita2.jpg"><img src="Rita2.jpg" alt="Foto 2 de Rita"></div>
+      <div class="thumb" role="listitem" tabindex="0" data-src="Rita3.jpg"><img src="Rita3.jpg" alt="Foto 3 de Rita"></div>
     </div>
-
-    
-
-    <!-- music -->
-    <div class="music" style="text-align:center;margin-top:26px;">
-      <button id="playBtn" class="animate-btn" style="background:#ff4fa8;border:none;padding:14px 24px;font-size:18px;border-radius:14px;color:white;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,0.3);cursor:pointer;transition:0.3s;">
-        ▶ Tocar música
-      </button>
-      <audio id="bgmusic" loop>
-        <source src="Jingle Bells - Kevin MacLeod.mp3" type="audio/mpeg" />
-      </audio>
-    </div>
-
-    <script>
-      const btn = document.getElementById('playBtn');
-      const audio = document.getElementById('bgmusic');
-      btn.addEventListener('click', () => {
-        audio.play();
-        btn.innerText = '🎵 A tocar';
-        btn.style.opacity = '0.7';
-      });
-    </script>
-
-    <!-- QR code -->
-    <div class="qr-container">
-      <p>Scan para abrir esta mensagem:</p>
-      <img src="qr.png" alt="QR Code" />
-    </div>
-
+    <div style="font-weight:700;margin-top:6px">Rita</div>
+    <div style="color:var(--muted)">Mujer de mi vida • Amante de viajes y buena cocina</div>
   </div>
-
-  <div class="snow"></div>
+  <div class="right">
+    <h1 id="ritaTitle" class="title">🎄 Feliz Navidad, Rita</h1>
+    <p class="subtitle">Para la mujer que es mi refugio y mi compañía.</p>
+    <div class="message" id="msg">Querida Rita,<br><br>Eres la mujer de mi vida. Sin ti no estaría donde estoy hoy: eres mi puerto de abrigo, la persona en la que puedo confiar siempre. Tu dedicación, tu inteligencia y esa forma de cuidar a nuestra familia me dejan sin palabras. Eres una cocinera maravillosa y una madre ejemplar para nuestros hijos.<br><br>Tu corazón es blando y generoso; aunque a veces parezcas dura, sé que en el fondo siempre estás ahí con cariño y apoyo. Te encanta viajar, conocer lugares nuevos y, claro, disfrutar de unas compras —y ¿quién no?—. Tu curiosidad y tu energía iluminan nuestras vidas.<br><br>Te quiero con todo mi corazón. Que esta Navidad te traiga tanta alegría como la que tú nos regalas cada día.<br><br>Con todo mi amor,<br>Tu pareja<br></div>
+    <div class="controls" role="toolbar" aria-label="Acciones">
+      <a class="btn music" href="https://www.youtube.com/watch?v=m4qoDcs6YYo&list=RDm4qoDcs6YYo&start_radio=1" target="_blank" rel="noopener noreferrer">🎧 Música favorita</a>
+      <button class="btn copy" id="copyBtn">📋 Copiar mensaje</button>
+      <button class="btn share" id="shareBtn">🔗 Compartir página</button>
+    </div>
+  </div>
 </div>
-
 <script>
-// snow particles
-const snow = document.querySelector('.snow');
-for(let i=0;i<40;i++){
-  const el = document.createElement('i');
-  el.style.left = (Math.random()*100)+'vw';
-  el.style.animationDuration = (6 + Math.random()*5)+'s';
-  el.style.animationDelay = (Math.random()*5)+'s';
-  el.style.width = el.style.height = (4 + Math.random()*6)+'px';
-  snow.appendChild(el);
-}
+// Thumbnail click to update main photo
+const thumbs = document.querySelectorAll('.thumb');
+const mainImg = document.querySelector('#mainPhoto img');
+thumbs.forEach(t => {
+  t.addEventListener('click', () => {
+    const src = t.getAttribute('data-src');
+    mainImg.src = src;
+    thumbs.forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+  });
+  t.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      t.click();
+    }
+  });
+});
+// Copy message
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const text = document.getElementById('msg').innerText.trim();
+  try {
+    await navigator.clipboard.writeText(text);
+    const b = document.getElementById('copyBtn');
+    const prev = b.innerText;
+    b.innerText = '✅ Copiado';
+    setTimeout(()=> b.innerText = prev, 1400);
+  } catch (e) {
+    alert('No se pudo copiar automáticamente. Selecciona y copia manualmente.');
+  }
+});
+// Share
+document.getElementById('shareBtn').addEventListener('click', (e) => {
+  if (navigator.share) {
+    navigator.share({ title: document.title, text: 'Mensaje para Rita', url: location.href }).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(location.href).then(()=> alert('Enlace copiado al portapapeles. Pégalo para compartir.'));
+  }
+});
 </script>
 </body>
 </html>
